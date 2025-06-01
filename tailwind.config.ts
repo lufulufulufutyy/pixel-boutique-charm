@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom vintage fashion palette
+				'warm-brown': '#A67358',
+				'soft-beige': '#F0E6D6',
+				'muted-mustard': '#D9A441',
+				'pastel-blue': '#B6CADF',
+				'cream-white': '#FFF9F2',
+				'vintage-coral': '#DC7A5B',
+				'forest-black': '#2A2A2A'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +93,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-5px)' }
+				},
+				'gentle-bounce': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-3px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'gentle-bounce': 'gentle-bounce 2s ease-in-out infinite'
+			},
+			fontFamily: {
+				'serif': ['Playfair Display', 'serif'],
+				'sans': ['Inter', 'system-ui', 'sans-serif']
 			}
 		}
 	},
