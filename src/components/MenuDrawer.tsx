@@ -2,6 +2,7 @@
 import { X, Shirt, Package, Sparkles, Heart, Camera, Tag, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 interface MenuDrawerProps {
   isOpen: boolean;
@@ -15,37 +16,43 @@ const MenuDrawer = ({ isOpen, onClose }: MenuDrawerProps) => {
       icon: <Shirt className="w-6 h-6" />,
       description: "Explore our curated collections",
       color: "bg-muted-mustard",
+      link: "/shop",
       subcategories: ["Tops", "Bottoms", "Outerwear", "Dresses", "Accessories"]
     },
     {
       title: "Lookbook",
       icon: <Sparkles className="w-6 h-6" />,
       description: "Outfit inspiration & styling ideas",
-      color: "bg-vintage-coral"
+      color: "bg-vintage-coral",
+      link: "/lookbook"
     },
     {
       title: "My Wardrobe",
       icon: <Heart className="w-6 h-6" />,
       description: "Your saved looks & favorites",
-      color: "bg-pastel-blue"
+      color: "bg-pastel-blue",
+      link: "/wardrobe"
     },
     {
       title: "Try On Room",
       icon: <Camera className="w-6 h-6" />,
       description: "Virtual fitting experience",
-      color: "bg-warm-brown"
+      color: "bg-warm-brown",
+      link: "/try-on"
     },
     {
       title: "New Arrivals",
       icon: <Package className="w-6 h-6" />,
       description: "Fresh pieces just for you",
-      color: "bg-muted-mustard"
+      color: "bg-muted-mustard",
+      link: "/new-arrivals"
     },
     {
       title: "Sales & Drops",
       icon: <Tag className="w-6 h-6" />,
       description: "Limited time offers",
-      color: "bg-vintage-coral"
+      color: "bg-vintage-coral",
+      link: "/sales"
     }
   ];
 
@@ -90,52 +97,51 @@ const MenuDrawer = ({ isOpen, onClose }: MenuDrawerProps) => {
               <div className="flex items-center gap-2 mb-2">
                 <Zap className="w-4 h-4 text-muted-mustard" />
                 <span className="font-serif font-medium text-warm-brown">
-                  {featuredLook.title}
+                  Today's Featured Look
                 </span>
               </div>
               <h3 className="font-serif text-lg font-bold text-forest-black mb-1">
-                {featuredLook.description}
+                Cozy Autumn Vibes
               </h3>
-              <p className="text-sm text-warm-brown mb-2">{featuredLook.image}</p>
-              <p className="text-xs text-forest-black/70 italic">{featuredLook.accent}</p>
+              <p className="text-sm text-warm-brown mb-2">Cropped argyle sweater + cream shorts</p>
+              <p className="text-xs text-forest-black/70 italic">Perfect for coffee dates ☕</p>
             </div>
           </Card>
 
           {/* Menu Sections */}
           <div className="space-y-4">
             {menuSections.map((section, index) => (
-              <Card 
-                key={section.title}
-                className="bg-cream-white border border-soft-beige shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group"
-              >
-                <div className="p-4">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-full ${section.color} text-cream-white group-hover:scale-110 transition-transform duration-300`}>
-                      {section.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-serif font-bold text-forest-black group-hover:text-warm-brown transition-colors">
-                        {section.title}
-                      </h3>
-                      <p className="text-sm text-forest-black/70">
-                        {section.description}
-                      </p>
-                      {section.subcategories && (
-                        <div className="flex flex-wrap gap-1 mt-2">
-                          {section.subcategories.map((sub) => (
-                            <span 
-                              key={sub}
-                              className="text-xs bg-soft-beige text-warm-brown px-2 py-1 rounded-full"
-                            >
-                              {sub}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+              <Link key={section.title} to={section.link} onClick={onClose}>
+                <Card className="bg-cream-white border border-soft-beige shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group">
+                  <div className="p-4">
+                    <div className="flex items-center gap-4">
+                      <div className={`p-3 rounded-full ${section.color} text-cream-white group-hover:scale-110 transition-transform duration-300`}>
+                        {section.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-serif font-bold text-forest-black group-hover:text-warm-brown transition-colors">
+                          {section.title}
+                        </h3>
+                        <p className="text-sm text-forest-black/70">
+                          {section.description}
+                        </p>
+                        {section.subcategories && (
+                          <div className="flex flex-wrap gap-1 mt-2">
+                            {section.subcategories.map((sub) => (
+                              <span 
+                                key={sub}
+                                className="text-xs bg-soft-beige text-warm-brown px-2 py-1 rounded-full"
+                              >
+                                {sub}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
 
