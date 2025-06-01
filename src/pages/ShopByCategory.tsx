@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Shirt, Package, Jacket, Crown, Gem } from "lucide-react";
+import { Shirt, Package, ShirtIcon, Crown, Gem } from "lucide-react";
 
 const ShopByCategory = () => {
   const categories = [
@@ -23,7 +23,7 @@ const ShopByCategory = () => {
     },
     {
       title: "Outerwear",
-      icon: <Jacket className="w-8 h-8" />,
+      icon: <ShirtIcon className="w-8 h-8" />,
       count: "67 items",
       color: "bg-warm-brown",
       description: "Jackets, coats & cardigans"
